@@ -1,0 +1,800 @@
+Grammar:
+
+Rule 0     S' -> statement
+Rule 1     statement -> expr
+Rule 2     statement -> ID = expr
+Rule 3     expr -> ID
+Rule 4     expr -> NUMBER
+Rule 5     expr -> ( expr )
+Rule 6     expr -> expr DIFF expr
+Rule 7     expr -> expr SUB
+Rule 8     expr -> expr SUM
+Rule 9     expr -> expr mod expr
+Rule 10    expr -> vdd
+Rule 11    expr -> falso
+Rule 12    expr -> - expr  [precedence=right, level=4]
+Rule 13    expr -> expr EQ expr  [precedence=left, level=1]
+Rule 14    expr -> expr / expr  [precedence=left, level=3]
+Rule 15    expr -> expr * expr  [precedence=left, level=3]
+Rule 16    expr -> expr - expr  [precedence=left, level=2]
+Rule 17    expr -> expr + expr  [precedence=left, level=2]
+
+Unused terminals:
+
+    \+\+
+    --
+    !=
+
+Terminals, with rules where they appear:
+
+!=                   : 
+(                    : 5
+)                    : 5
+*                    : 15
++                    : 17
+-                    : 12 16
+--                   : 
+/                    : 14
+=                    : 2
+DIFF                 : 6
+EQ                   : 13
+ID                   : 2 3
+NUMBER               : 4
+SUB                  : 7
+SUM                  : 8
+\+\+                 : 
+error                : 
+falso                : 11
+mod                  : 9
+vdd                  : 10
+
+Nonterminals, with rules where they appear:
+
+expr                 : 1 2 5 6 6 7 8 9 9 12 13 13 14 14 15 15 16 16 17 17
+statement            : 0
+
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . expr
+    (2) statement -> . ID = expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 3
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    statement                      shift and go to state 1
+    expr                           shift and go to state 2
+
+state 1
+
+    (0) S' -> statement .
+
+
+state 2
+
+    (1) statement -> expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    $end            reduce using rule 1 (statement -> expr .)
+    DIFF            shift and go to state 9
+    SUB             shift and go to state 10
+    SUM             shift and go to state 11
+    mod             shift and go to state 12
+    EQ              shift and go to state 13
+    /               shift and go to state 14
+    *               shift and go to state 15
+    -               shift and go to state 16
+    +               shift and go to state 17
+
+
+state 3
+
+    (2) statement -> ID . = expr
+    (3) expr -> ID .
+    =               shift and go to state 18
+    DIFF            reduce using rule 3 (expr -> ID .)
+    SUB             reduce using rule 3 (expr -> ID .)
+    SUM             reduce using rule 3 (expr -> ID .)
+    mod             reduce using rule 3 (expr -> ID .)
+    EQ              reduce using rule 3 (expr -> ID .)
+    /               reduce using rule 3 (expr -> ID .)
+    *               reduce using rule 3 (expr -> ID .)
+    -               reduce using rule 3 (expr -> ID .)
+    +               reduce using rule 3 (expr -> ID .)
+    $end            reduce using rule 3 (expr -> ID .)
+
+
+state 4
+
+    (4) expr -> NUMBER .
+    DIFF            reduce using rule 4 (expr -> NUMBER .)
+    SUB             reduce using rule 4 (expr -> NUMBER .)
+    SUM             reduce using rule 4 (expr -> NUMBER .)
+    mod             reduce using rule 4 (expr -> NUMBER .)
+    EQ              reduce using rule 4 (expr -> NUMBER .)
+    /               reduce using rule 4 (expr -> NUMBER .)
+    *               reduce using rule 4 (expr -> NUMBER .)
+    -               reduce using rule 4 (expr -> NUMBER .)
+    +               reduce using rule 4 (expr -> NUMBER .)
+    $end            reduce using rule 4 (expr -> NUMBER .)
+    )               reduce using rule 4 (expr -> NUMBER .)
+
+
+state 5
+
+    (5) expr -> ( . expr )
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 19
+
+state 6
+
+    (10) expr -> vdd .
+    DIFF            reduce using rule 10 (expr -> vdd .)
+    SUB             reduce using rule 10 (expr -> vdd .)
+    SUM             reduce using rule 10 (expr -> vdd .)
+    mod             reduce using rule 10 (expr -> vdd .)
+    EQ              reduce using rule 10 (expr -> vdd .)
+    /               reduce using rule 10 (expr -> vdd .)
+    *               reduce using rule 10 (expr -> vdd .)
+    -               reduce using rule 10 (expr -> vdd .)
+    +               reduce using rule 10 (expr -> vdd .)
+    $end            reduce using rule 10 (expr -> vdd .)
+    )               reduce using rule 10 (expr -> vdd .)
+
+
+state 7
+
+    (11) expr -> falso .
+    DIFF            reduce using rule 11 (expr -> falso .)
+    SUB             reduce using rule 11 (expr -> falso .)
+    SUM             reduce using rule 11 (expr -> falso .)
+    mod             reduce using rule 11 (expr -> falso .)
+    EQ              reduce using rule 11 (expr -> falso .)
+    /               reduce using rule 11 (expr -> falso .)
+    *               reduce using rule 11 (expr -> falso .)
+    -               reduce using rule 11 (expr -> falso .)
+    +               reduce using rule 11 (expr -> falso .)
+    $end            reduce using rule 11 (expr -> falso .)
+    )               reduce using rule 11 (expr -> falso .)
+
+
+state 8
+
+    (12) expr -> - . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 21
+
+state 9
+
+    (6) expr -> expr DIFF . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 22
+
+state 10
+
+    (7) expr -> expr SUB .
+    DIFF            reduce using rule 7 (expr -> expr SUB .)
+    SUB             reduce using rule 7 (expr -> expr SUB .)
+    SUM             reduce using rule 7 (expr -> expr SUB .)
+    mod             reduce using rule 7 (expr -> expr SUB .)
+    EQ              reduce using rule 7 (expr -> expr SUB .)
+    /               reduce using rule 7 (expr -> expr SUB .)
+    *               reduce using rule 7 (expr -> expr SUB .)
+    -               reduce using rule 7 (expr -> expr SUB .)
+    +               reduce using rule 7 (expr -> expr SUB .)
+    $end            reduce using rule 7 (expr -> expr SUB .)
+    )               reduce using rule 7 (expr -> expr SUB .)
+
+
+state 11
+
+    (8) expr -> expr SUM .
+    DIFF            reduce using rule 8 (expr -> expr SUM .)
+    SUB             reduce using rule 8 (expr -> expr SUM .)
+    SUM             reduce using rule 8 (expr -> expr SUM .)
+    mod             reduce using rule 8 (expr -> expr SUM .)
+    EQ              reduce using rule 8 (expr -> expr SUM .)
+    /               reduce using rule 8 (expr -> expr SUM .)
+    *               reduce using rule 8 (expr -> expr SUM .)
+    -               reduce using rule 8 (expr -> expr SUM .)
+    +               reduce using rule 8 (expr -> expr SUM .)
+    $end            reduce using rule 8 (expr -> expr SUM .)
+    )               reduce using rule 8 (expr -> expr SUM .)
+
+
+state 12
+
+    (9) expr -> expr mod . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 23
+
+state 13
+
+    (13) expr -> expr EQ . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 24
+
+state 14
+
+    (14) expr -> expr / . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 25
+
+state 15
+
+    (15) expr -> expr * . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 26
+
+state 16
+
+    (16) expr -> expr - . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 27
+
+state 17
+
+    (17) expr -> expr + . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 28
+
+state 18
+
+    (2) statement -> ID = . expr
+    (3) expr -> . ID
+    (4) expr -> . NUMBER
+    (5) expr -> . ( expr )
+    (6) expr -> . expr DIFF expr
+    (7) expr -> . expr SUB
+    (8) expr -> . expr SUM
+    (9) expr -> . expr mod expr
+    (10) expr -> . vdd
+    (11) expr -> . falso
+    (12) expr -> . - expr
+    (13) expr -> . expr EQ expr
+    (14) expr -> . expr / expr
+    (15) expr -> . expr * expr
+    (16) expr -> . expr - expr
+    (17) expr -> . expr + expr
+    ID              shift and go to state 20
+    NUMBER          shift and go to state 4
+    (               shift and go to state 5
+    vdd             shift and go to state 6
+    falso           shift and go to state 7
+    -               shift and go to state 8
+
+    expr                           shift and go to state 29
+
+state 19
+
+    (5) expr -> ( expr . )
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    )               shift and go to state 30
+    DIFF            shift and go to state 9
+    SUB             shift and go to state 10
+    SUM             shift and go to state 11
+    mod             shift and go to state 12
+    EQ              shift and go to state 13
+    /               shift and go to state 14
+    *               shift and go to state 15
+    -               shift and go to state 16
+    +               shift and go to state 17
+
+
+state 20
+
+    (3) expr -> ID .
+    )               reduce using rule 3 (expr -> ID .)
+    DIFF            reduce using rule 3 (expr -> ID .)
+    SUB             reduce using rule 3 (expr -> ID .)
+    SUM             reduce using rule 3 (expr -> ID .)
+    mod             reduce using rule 3 (expr -> ID .)
+    EQ              reduce using rule 3 (expr -> ID .)
+    /               reduce using rule 3 (expr -> ID .)
+    *               reduce using rule 3 (expr -> ID .)
+    -               reduce using rule 3 (expr -> ID .)
+    +               reduce using rule 3 (expr -> ID .)
+    $end            reduce using rule 3 (expr -> ID .)
+
+
+state 21
+
+    (12) expr -> - expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    DIFF            reduce using rule 12 (expr -> - expr .)
+    SUB             reduce using rule 12 (expr -> - expr .)
+    SUM             reduce using rule 12 (expr -> - expr .)
+    mod             reduce using rule 12 (expr -> - expr .)
+    EQ              reduce using rule 12 (expr -> - expr .)
+    /               reduce using rule 12 (expr -> - expr .)
+    *               reduce using rule 12 (expr -> - expr .)
+    -               reduce using rule 12 (expr -> - expr .)
+    +               reduce using rule 12 (expr -> - expr .)
+    $end            reduce using rule 12 (expr -> - expr .)
+    )               reduce using rule 12 (expr -> - expr .)
+
+
+state 22
+
+    (6) expr -> expr DIFF expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+  ! shift/reduce conflict for DIFF resolved as shift
+  ! shift/reduce conflict for SUB resolved as shift
+  ! shift/reduce conflict for SUM resolved as shift
+  ! shift/reduce conflict for mod resolved as shift
+  ! shift/reduce conflict for EQ resolved as shift
+  ! shift/reduce conflict for / resolved as shift
+  ! shift/reduce conflict for * resolved as shift
+  ! shift/reduce conflict for - resolved as shift
+  ! shift/reduce conflict for + resolved as shift
+    $end            reduce using rule 6 (expr -> expr DIFF expr .)
+    )               reduce using rule 6 (expr -> expr DIFF expr .)
+    DIFF            shift and go to state 9
+    SUB             shift and go to state 10
+    SUM             shift and go to state 11
+    mod             shift and go to state 12
+    EQ              shift and go to state 13
+    /               shift and go to state 14
+    *               shift and go to state 15
+    -               shift and go to state 16
+    +               shift and go to state 17
+
+
+state 23
+
+    (9) expr -> expr mod expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+  ! shift/reduce conflict for DIFF resolved as shift
+  ! shift/reduce conflict for SUB resolved as shift
+  ! shift/reduce conflict for SUM resolved as shift
+  ! shift/reduce conflict for mod resolved as shift
+  ! shift/reduce conflict for EQ resolved as shift
+  ! shift/reduce conflict for / resolved as shift
+  ! shift/reduce conflict for * resolved as shift
+  ! shift/reduce conflict for - resolved as shift
+  ! shift/reduce conflict for + resolved as shift
+    $end            reduce using rule 9 (expr -> expr mod expr .)
+    )               reduce using rule 9 (expr -> expr mod expr .)
+    DIFF            shift and go to state 9
+    SUB             shift and go to state 10
+    SUM             shift and go to state 11
+    mod             shift and go to state 12
+    EQ              shift and go to state 13
+    /               shift and go to state 14
+    *               shift and go to state 15
+    -               shift and go to state 16
+    +               shift and go to state 17
+
+
+state 24
+
+    (13) expr -> expr EQ expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    DIFF            reduce using rule 13 (expr -> expr EQ expr .)
+    SUB             reduce using rule 13 (expr -> expr EQ expr .)
+    SUM             reduce using rule 13 (expr -> expr EQ expr .)
+    mod             reduce using rule 13 (expr -> expr EQ expr .)
+    EQ              reduce using rule 13 (expr -> expr EQ expr .)
+    $end            reduce using rule 13 (expr -> expr EQ expr .)
+    )               reduce using rule 13 (expr -> expr EQ expr .)
+    /               shift and go to state 14
+    *               shift and go to state 15
+    -               shift and go to state 16
+    +               shift and go to state 17
+
+
+state 25
+
+    (14) expr -> expr / expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    DIFF            reduce using rule 14 (expr -> expr / expr .)
+    SUB             reduce using rule 14 (expr -> expr / expr .)
+    SUM             reduce using rule 14 (expr -> expr / expr .)
+    mod             reduce using rule 14 (expr -> expr / expr .)
+    EQ              reduce using rule 14 (expr -> expr / expr .)
+    /               reduce using rule 14 (expr -> expr / expr .)
+    *               reduce using rule 14 (expr -> expr / expr .)
+    -               reduce using rule 14 (expr -> expr / expr .)
+    +               reduce using rule 14 (expr -> expr / expr .)
+    $end            reduce using rule 14 (expr -> expr / expr .)
+    )               reduce using rule 14 (expr -> expr / expr .)
+
+
+state 26
+
+    (15) expr -> expr * expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    DIFF            reduce using rule 15 (expr -> expr * expr .)
+    SUB             reduce using rule 15 (expr -> expr * expr .)
+    SUM             reduce using rule 15 (expr -> expr * expr .)
+    mod             reduce using rule 15 (expr -> expr * expr .)
+    EQ              reduce using rule 15 (expr -> expr * expr .)
+    /               reduce using rule 15 (expr -> expr * expr .)
+    *               reduce using rule 15 (expr -> expr * expr .)
+    -               reduce using rule 15 (expr -> expr * expr .)
+    +               reduce using rule 15 (expr -> expr * expr .)
+    $end            reduce using rule 15 (expr -> expr * expr .)
+    )               reduce using rule 15 (expr -> expr * expr .)
+
+
+state 27
+
+    (16) expr -> expr - expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    DIFF            reduce using rule 16 (expr -> expr - expr .)
+    SUB             reduce using rule 16 (expr -> expr - expr .)
+    SUM             reduce using rule 16 (expr -> expr - expr .)
+    mod             reduce using rule 16 (expr -> expr - expr .)
+    EQ              reduce using rule 16 (expr -> expr - expr .)
+    -               reduce using rule 16 (expr -> expr - expr .)
+    +               reduce using rule 16 (expr -> expr - expr .)
+    $end            reduce using rule 16 (expr -> expr - expr .)
+    )               reduce using rule 16 (expr -> expr - expr .)
+    /               shift and go to state 14
+    *               shift and go to state 15
+
+
+state 28
+
+    (17) expr -> expr + expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    DIFF            reduce using rule 17 (expr -> expr + expr .)
+    SUB             reduce using rule 17 (expr -> expr + expr .)
+    SUM             reduce using rule 17 (expr -> expr + expr .)
+    mod             reduce using rule 17 (expr -> expr + expr .)
+    EQ              reduce using rule 17 (expr -> expr + expr .)
+    -               reduce using rule 17 (expr -> expr + expr .)
+    +               reduce using rule 17 (expr -> expr + expr .)
+    $end            reduce using rule 17 (expr -> expr + expr .)
+    )               reduce using rule 17 (expr -> expr + expr .)
+    /               shift and go to state 14
+    *               shift and go to state 15
+
+
+state 29
+
+    (2) statement -> ID = expr .
+    (6) expr -> expr . DIFF expr
+    (7) expr -> expr . SUB
+    (8) expr -> expr . SUM
+    (9) expr -> expr . mod expr
+    (13) expr -> expr . EQ expr
+    (14) expr -> expr . / expr
+    (15) expr -> expr . * expr
+    (16) expr -> expr . - expr
+    (17) expr -> expr . + expr
+    $end            reduce using rule 2 (statement -> ID = expr .)
+    DIFF            shift and go to state 9
+    SUB             shift and go to state 10
+    SUM             shift and go to state 11
+    mod             shift and go to state 12
+    EQ              shift and go to state 13
+    /               shift and go to state 14
+    *               shift and go to state 15
+    -               shift and go to state 16
+    +               shift and go to state 17
+
+
+state 30
+
+    (5) expr -> ( expr ) .
+    DIFF            reduce using rule 5 (expr -> ( expr ) .)
+    SUB             reduce using rule 5 (expr -> ( expr ) .)
+    SUM             reduce using rule 5 (expr -> ( expr ) .)
+    mod             reduce using rule 5 (expr -> ( expr ) .)
+    EQ              reduce using rule 5 (expr -> ( expr ) .)
+    /               reduce using rule 5 (expr -> ( expr ) .)
+    *               reduce using rule 5 (expr -> ( expr ) .)
+    -               reduce using rule 5 (expr -> ( expr ) .)
+    +               reduce using rule 5 (expr -> ( expr ) .)
+    $end            reduce using rule 5 (expr -> ( expr ) .)
+    )               reduce using rule 5 (expr -> ( expr ) .)
+
+
+Conflicts:
+
+shift/reduce conflict for DIFF in state 22 resolved as shift
+shift/reduce conflict for SUB in state 22 resolved as shift
+shift/reduce conflict for SUM in state 22 resolved as shift
+shift/reduce conflict for mod in state 22 resolved as shift
+shift/reduce conflict for EQ in state 22 resolved as shift
+shift/reduce conflict for / in state 22 resolved as shift
+shift/reduce conflict for * in state 22 resolved as shift
+shift/reduce conflict for - in state 22 resolved as shift
+shift/reduce conflict for + in state 22 resolved as shift
+shift/reduce conflict for DIFF in state 23 resolved as shift
+shift/reduce conflict for SUB in state 23 resolved as shift
+shift/reduce conflict for SUM in state 23 resolved as shift
+shift/reduce conflict for mod in state 23 resolved as shift
+shift/reduce conflict for EQ in state 23 resolved as shift
+shift/reduce conflict for / in state 23 resolved as shift
+shift/reduce conflict for * in state 23 resolved as shift
+shift/reduce conflict for - in state 23 resolved as shift
+shift/reduce conflict for + in state 23 resolved as shift
